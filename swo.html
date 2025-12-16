@@ -1,234 +1,27 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>Nisa 💖</title>
-
-<style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  height:100vh;
-  overflow:hidden;
-  font-family:'Segoe UI',sans-serif;
-  background:radial-gradient(circle at top,#0b0b2e,#000);
-  color:#fff;
-}
-
-/* 🌌 KAYAN YILDIZ ARKA PLAN */
-.sky{
-  position:fixed;
-  inset:0;
-  overflow:hidden;
-  z-index:-2;
-}
-
-.star{
-  position:absolute;
-  top:-10%;
-  width:2px;
-  height:80px;
-  background:linear-gradient(-45deg,rgba(255,255,255,1),rgba(255,255,255,0));
-  opacity:0.8;
-  animation:shoot linear infinite;
-}
-
-@keyframes shoot{
-  from{
-    transform:translate(0,0) rotate(45deg);
-    opacity:1;
-  }
-  to{
-    transform:translate(-120vw,120vh) rotate(45deg);
-    opacity:0;
-  }
-}
-
-/* ALTIN YAZI */
-.gold-text{
-  background:linear-gradient(90deg,#b8860b,#ffd700,#fff3b0,#ffd700,#b8860b);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 0 18px rgba(255,215,0,0.7);
-  animation:shine 3s linear infinite;
-}
-@keyframes shine{
-  0%{background-position:0%}
-  100%{background-position:200%}
-}
-
-/* Kalpler */
-.heart-fall{
-  position:fixed;
-  top:-10%;
-  font-size:20px;
-  animation:fall linear infinite;
-}
-@keyframes fall{
-  to{transform:translateY(120vh);opacity:0;}
-}
-
-/* Ana kutu */
-.love-box{
-  max-width:600px;
-  padding:40px;
-  margin:auto;
-  margin-top:10vh;
-  background:rgba(0,0,0,0.55);
-  border-radius:25px;
-  text-align:center;
-  box-shadow:0 0 30px rgba(255,77,109,0.6);
-}
-
-.big-heart{
-  font-size:60px;
-  animation:pulse 1.5s infinite;
-}
-@keyframes pulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.2)}
-  100%{transform:scale(1)}
-}
-
-/* Alt kısım */
-.bottom-text{margin-top:35px;}
-
-.date-text{
-  font-family:"Times New Roman",Georgia,serif;
-  font-size:22px;
-  font-weight:bold;
-  letter-spacing:3px;
-  opacity:0;
-  animation:dateReveal 3s ease forwards;
-  animation-delay:1.5s;
-}
-@keyframes dateReveal{
-  from{opacity:0;transform:scale(0.8);}
-  to{opacity:1;transform:scale(1);text-shadow:0 0 25px gold;}
-}
-
-.name-text{
-  font-family:"Times New Roman",Georgia,serif;
-  font-size:46px;
-  font-weight:bold;
-  letter-spacing:5px;
-}
-
-.counter{
-  margin-top:15px;
-  font-family:"Times New Roman",Georgia,serif;
-  font-size:16px;
-}
-
-/* Diğer */
-.footer-sign{
-  position:fixed;
-  bottom:10px;
-  right:15px;
-  font-size:12px;
-  opacity:0.7;
-}
-.tap{
-  position:fixed;
-  top:15px;
-  left:50%;
-  transform:translateX(-50%);
-  font-size:13px;
-  opacity:0.8;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swonzy'nun Web Sitesi</title> <!-- Tarayıcı sekmesindeki başlık -->
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 100px;
+        }
+        h1 {
+            color: #990000; /* Bordo renk */
+        }
+        p {
+            color: #0066cc; /* Mavi renk */
+            font-size: 20px;
+        }
+    </style>
 </head>
-
-<body onclick="playMusic()">
-
-<!-- 🌌 ARKA PLAN -->
-<div class="sky" id="sky"></div>
-
-<div class="tap gold-text">💗 Müzik için ekrana dokun</div>
-
-<section class="love-box">
-  <div class="big-heart">❤️</div>
-
-  <p class="gold-text" style="font-size:18px;">
-    Hayatıma girdiğin günden beri<br>
-    gecelerim daha parlak,<br>
-    kalbim daha huzurlu.<br><br>
-    Gülüşün en sevdiğim yer,<br>
-    adın kalbimin ezberi.<br><br>
-    İyi ki varsın,<br>
-    iyi ki benimsin…
-  </p>
-
-  <div class="bottom-text">
-    <div class="date-text gold-text">25.08.2025</div>
-    <div class="name-text gold-text">NISA</div>
-    <div id="counter" class="counter gold-text"></div>
-  </div>
-
-  <p class="gold-text" style="margin-top:20px;"><strong>— SWONZY</strong></p>
-</section>
-
-<div class="footer-sign gold-text">
-  Yiğit K. tarafından hazırlandı
-</div>
-
-<audio id="music" loop>
-  <source src="https://cdn.pixabay.com/audio/2023/03/28/audio_6b1bb3c7b2.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-/* 🌠 Kayan yıldız üret */
-const sky=document.getElementById("sky");
-function createStar(){
-  const s=document.createElement("div");
-  s.className="star";
-  s.style.left=Math.random()*120+"vw";
-  s.style.animationDuration=(2+Math.random()*3)+"s";
-  sky.appendChild(s);
-  setTimeout(()=>s.remove(),6000);
-}
-setInterval(createStar,400);
-
-/* Kalp yağmuru */
-function createHeart(){
-  const h=document.createElement("div");
-  h.className="heart-fall";
-  h.innerHTML="❤️";
-  h.style.left=Math.random()*100+"vw";
-  h.style.animationDuration=(3+Math.random()*5)+"s";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),8000);
-}
-setInterval(createHeart,350);
-
-/* Müzik */
-let played=false;
-function playMusic(){
-  if(!played){
-    document.getElementById("music").play();
-    played=true;
-  }
-}
-
-/* ⏱️ Sayaç */
-const startDate=new Date("2025-08-25T00:00:00");
-function updateCounter(){
-  const now=new Date();
-  const diff=Math.max(0,now-startDate);
-  const totalSeconds=Math.floor(diff/1000);
-
-  const days=Math.floor(totalSeconds/86400);
-  const hours=Math.floor((totalSeconds%86400)/3600);
-  const minutes=Math.floor((totalSeconds%3600)/60);
-  const seconds=totalSeconds%60;
-
-  document.getElementById("counter").innerHTML=
-    `O günden beri: ${days} gün ${hours} saat ${minutes} dk ${seconds} sn`;
-}
-setInterval(updateCounter,1000);
-updateCounter();
-</script>
-
+<body>
+    <h1>Swonzy'ye Hoşgeldiniz!</h1>
+    <p>Bu benim GitHub Pages ile yayınladığım ilk web sitem.</p>
 </body>
 </html>
-
